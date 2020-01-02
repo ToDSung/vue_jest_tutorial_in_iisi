@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
+    <v-btn><a href="/todo">To ToDo page</a></v-btn>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
@@ -16,3 +17,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+  a{
+   text-decoration: none;
+  }
+
+</style>
