@@ -40,11 +40,25 @@
       <h2>{{props_message}}</h2>
       <h2>{{vuex_message}}</h2>
     </v-card>
+    <v-card
+      class="mx-auto"
+      max-width="400"
+      tile
+    >
+      <v-btn @click="callFruitAjax">fruit ajax</v-btn>
+      <v-list-item v-for='(item,i) in fruits' :key='i'>
+        <v-list-item-content>
+          <v-list-item-title class="fruit-name">{{item.name}}</v-list-item-title>
+          <v-list-item-subtitle class="fruit-price">${{item.price}}</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+    </v-card>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import axios from 'axios';
 
 export default {
   name: 'todo',
@@ -65,6 +79,8 @@ export default {
     inputText: '',
     inputDetail: '',
     indexForUpdate: null,
+
+    fruits: [],
   }),
   computed: {
     vuex_message() {
@@ -94,6 +110,13 @@ export default {
       this.indexForUpdate = index;
       this.inputText = this.todoList[index].text;
       this.inputDetail = this.todoList[index].detail;
+    },
+    callFruitAjax() {
+      axios.get('http://127.0.0.1:23456/fruit')
+        .then((res) => {
+          this.fruits = res.data.data.fruits;
+        })
+        .catch(error => console.log(error));
     },
   },
 };
