@@ -20,6 +20,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "todo" */ '../views/ToDoList.vue'),
     // component: Home,
   },
+  {
+    path: '/recaptcha/',
+    name: 'recaptcha',
+    component: () => import(/* webpackChunkName: "todo" */ '../views/ReCapatCha.vue'),
+  },
 ];
 
 const router = new VueRouter({
